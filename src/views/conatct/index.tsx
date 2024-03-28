@@ -99,7 +99,7 @@ export const ContactView: FC<ContactViewProps> = ({ setOpenContact }) => {
                         id="message"
                         name="message"
                         className="border-default-200 relative  block w-full w-full rounded border-white/10 bg-transparent py-1.5 px-3 text-white/80 focus:border-white/25 focus:ring-transparent"
-                        rows="6"
+                        rows={6}
                         placeholder="message.."
                       ></textarea>
                       <ValidationError
