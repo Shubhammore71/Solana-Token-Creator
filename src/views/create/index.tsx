@@ -35,8 +35,12 @@ import { error } from "console";
 import { InputView } from "../index";
 import Branding from "../../components/Branding";
 
+interface CreateViewProps {
+    setOpenCreateModal: (value: boolean) => void;
+  }
 
-export const CreateView: FC = ({setOpenCreateModal})=>{
+
+export const CreateView: FC<CreateViewProps> = ({setOpenCreateModal})=>{
 
     const{connection}=useConnection();
     const {publicKey,sendTransaction}=useWallet();
