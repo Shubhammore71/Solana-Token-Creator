@@ -1,7 +1,7 @@
 import {useLocalStorage} from "@solana/wallet-adapter-react";
 import {FC,createContext,ReactNode,useContext} from "react";
 
-export interface AutoCOnnectContextState{
+export interface AutoConnectContextState{
   autoConnect : boolean;
   setAutoConnect(autoConnect:boolean):void;
 }
