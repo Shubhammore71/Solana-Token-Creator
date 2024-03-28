@@ -11,7 +11,7 @@ export const OfferView: FC = ({})=>{
                         <h2 className="mb-4 text-3xl font-medium capitalize text-white">
                             Solana token popularity
                         </h2>
-                        <p class="text-default-200 text-sm font-medium">
+                        <p className="text-default-200 text-sm font-medium">
                         Start working with Solana Genius's Token Creator, It allows you to create
                         solana token by Creating, deploying, airdrop, transfering and
                         updating metadata.
