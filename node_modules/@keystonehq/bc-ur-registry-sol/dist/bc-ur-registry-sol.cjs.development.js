@@ -1,0 +1,268 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var bcUrRegistry = require('@keystonehq/bc-ur-registry');
+var uuid = require('uuid');
+
+const ExtendedRegistryTypes = {
+  SOL_SIGN_REQUEST: /*#__PURE__*/new bcUrRegistry.RegistryType("sol-sign-request", 1101),
+  SOL_SIGNATURE: /*#__PURE__*/new bcUrRegistry.RegistryType("sol-signature", 1102),
+  SOL_NFT_ITEM: /*#__PURE__*/new bcUrRegistry.RegistryType("sol-nft-item", 1104)
+};
+
+const {
+  decodeToDataItem,
+  RegistryTypes
+} = bcUrRegistry.extend;
+
+(function (SignType) {
+  SignType[SignType["Transaction"] = 1] = "Transaction";
+  SignType[SignType["Message"] = 2] = "Message";
+})(exports.SignType || (exports.SignType = {}));
+
+var Keys;
+
+(function (Keys) {
+  Keys[Keys["requestId"] = 1] = "requestId";
+  Keys[Keys["signData"] = 2] = "signData";
+  Keys[Keys["derivationPath"] = 3] = "derivationPath";
+  Keys[Keys["address"] = 4] = "address";
+  Keys[Keys["origin"] = 5] = "origin";
+  Keys[Keys["signType"] = 6] = "signType";
+})(Keys || (Keys = {}));
+
+class SolSignRequest extends bcUrRegistry.RegistryItem {
+  constructor(args) {
+    super();
+
+    this.getRegistryType = () => ExtendedRegistryTypes.SOL_SIGN_REQUEST;
+
+    this.getRequestId = () => this.requestId;
+
+    this.getSignData = () => this.signData;
+
+    this.getDerivationPath = () => this.derivationPath.getPath();
+
+    this.getSignRequestAddress = () => this.address;
+
+    this.getOrigin = () => this.origin;
+
+    this.getSignType = () => this.signType;
+
+    this.toDataItem = () => {
+      const map = {};
+
+      if (this.requestId) {
+        map[Keys.requestId] = new bcUrRegistry.DataItem(this.requestId, RegistryTypes.UUID.getTag());
+      }
+
+      if (this.address) {
+        map[Keys.address] = this.address;
+      }
+
+      if (this.origin) {
+        map[Keys.origin] = this.origin;
+      }
+
+      map[Keys.signData] = this.signData;
+      map[Keys.signType] = this.signType;
+      const keyPath = this.derivationPath.toDataItem();
+      keyPath.setTag(this.derivationPath.getRegistryType().getTag());
+      map[Keys.derivationPath] = keyPath;
+      return new bcUrRegistry.DataItem(map);
+    };
+
+    this.requestId = args.requestId;
+    this.signData = args.signData;
+    this.derivationPath = args.derivationPath;
+    this.address = args.address;
+    this.origin = args.origin;
+    this.signType = args.signType;
+  }
+
+  static constructSOLRequest(signData, hdPath, xfp, signType, uuidString, address, origin) {
+    const paths = hdPath.replace(/[m|M]\//, "").split("/");
+    const hdpathObject = new bcUrRegistry.CryptoKeypath(paths.map(path => {
+      const index = parseInt(path.replace("'", ""));
+      let isHardened = false;
+
+      if (path.endsWith("'")) {
+        isHardened = true;
+      }
+
+      return new bcUrRegistry.PathComponent({
+        index,
+        hardened: isHardened
+      });
+    }), Buffer.from(xfp, "hex"));
+    return new SolSignRequest({
+      requestId: uuidString ? Buffer.from(uuid.parse(uuidString)) : undefined,
+      signData,
+      derivationPath: hdpathObject,
+      address: address ? Buffer.from(address.replace("0x", ""), "hex") : undefined,
+      origin: origin || undefined,
+      signType
+    });
+  }
+
+}
+
+SolSignRequest.fromDataItem = dataItem => {
+  const map = dataItem.getData();
+  const signData = map[Keys.signData];
+  const derivationPath = bcUrRegistry.CryptoKeypath.fromDataItem(map[Keys.derivationPath]);
+  const address = map[Keys.address] ? map[Keys.address] : undefined;
+  const requestId = map[Keys.requestId] ? map[Keys.requestId].getData() : undefined;
+  const origin = map[Keys.origin] ? map[Keys.origin] : undefined;
+  const signType = map[Keys.signType];
+  return new SolSignRequest({
+    requestId,
+    signData,
+    derivationPath,
+    address,
+    origin,
+    signType
+  });
+};
+
+SolSignRequest.fromCBOR = _cborPayload => {
+  const dataItem = decodeToDataItem(_cborPayload);
+  return SolSignRequest.fromDataItem(dataItem);
+};
+
+const {
+  RegistryTypes: RegistryTypes$1,
+  decodeToDataItem: decodeToDataItem$1
+} = bcUrRegistry.extend;
+var Keys$1;
+
+(function (Keys) {
+  Keys[Keys["requestId"] = 1] = "requestId";
+  Keys[Keys["signature"] = 2] = "signature";
+})(Keys$1 || (Keys$1 = {}));
+
+class SolSignature extends bcUrRegistry.RegistryItem {
+  constructor(signature, requestId) {
+    super();
+
+    this.getRegistryType = () => ExtendedRegistryTypes.SOL_SIGNATURE;
+
+    this.getRequestId = () => this.requestId;
+
+    this.getSignature = () => this.signature;
+
+    this.toDataItem = () => {
+      const map = {};
+
+      if (this.requestId) {
+        map[Keys$1.requestId] = new bcUrRegistry.DataItem(this.requestId, RegistryTypes$1.UUID.getTag());
+      }
+
+      map[Keys$1.signature] = this.signature;
+      return new bcUrRegistry.DataItem(map);
+    };
+
+    this.signature = signature;
+    this.requestId = requestId;
+  }
+
+}
+
+SolSignature.fromDataItem = dataItem => {
+  const map = dataItem.getData();
+  const signature = map[Keys$1.signature];
+  const requestId = map[Keys$1.requestId] ? map[Keys$1.requestId].getData() : undefined;
+  return new SolSignature(signature, requestId);
+};
+
+SolSignature.fromCBOR = _cborPayload => {
+  const dataItem = decodeToDataItem$1(_cborPayload);
+  return SolSignature.fromDataItem(dataItem);
+};
+
+const {
+  decodeToDataItem: decodeToDataItem$2
+} = bcUrRegistry.extend;
+var Keys$2;
+
+(function (Keys) {
+  Keys[Keys["mintAddress"] = 1] = "mintAddress";
+  Keys[Keys["collectionName"] = 2] = "collectionName";
+  Keys[Keys["name"] = 3] = "name";
+  Keys[Keys["mediaData"] = 4] = "mediaData";
+})(Keys$2 || (Keys$2 = {}));
+
+class SOLNFTItem extends bcUrRegistry.RegistryItem {
+  constructor(args) {
+    super();
+
+    this.getRegistryType = () => ExtendedRegistryTypes.SOL_NFT_ITEM;
+
+    this.getName = () => this.name;
+
+    this.getMediaData = () => this.mediaData;
+
+    this.getMintAddress = () => this.mintAddress;
+
+    this.getCollectionName = () => this.collectionName;
+
+    this.toDataItem = () => {
+      const map = {};
+      map[Keys$2.name] = this.name;
+      map[Keys$2.mintAddress] = this.mintAddress;
+      map[Keys$2.collectionName] = this.collectionName;
+      map[Keys$2.mediaData] = this.mediaData;
+      return new bcUrRegistry.DataItem(map);
+    };
+
+    this.name = args.name;
+    this.mintAddress = args.mintAddress;
+    this.collectionName = args.collectionName;
+    this.mediaData = args.mediaData; // remove the data perfix for android usage
+  }
+
+  static constructETHNFTItem(mintAddress, collectionName, name, mediaData) {
+    return new SOLNFTItem({
+      mintAddress,
+      collectionName,
+      mediaData,
+      name
+    });
+  }
+
+}
+
+SOLNFTItem.fromDataItem = dataItem => {
+  const map = dataItem.getData();
+  const name = map[Keys$2.name];
+  const mediaData = map[Keys$2.mediaData];
+  const mintAddress = map[Keys$2.mintAddress];
+  const collectionName = map[Keys$2.collectionName];
+  return new SOLNFTItem({
+    name,
+    mintAddress,
+    collectionName,
+    mediaData
+  });
+};
+
+SOLNFTItem.fromCBOR = _cborPayload => {
+  const dataItem = decodeToDataItem$2(_cborPayload);
+  return SOLNFTItem.fromDataItem(dataItem);
+};
+
+bcUrRegistry.patchTags(Object.values(ExtendedRegistryTypes).filter(rt => !!rt.getTag()).map(rt => rt.getTag()));
+
+Object.keys(bcUrRegistry).forEach(function (k) {
+  if (k !== 'default') Object.defineProperty(exports, k, {
+    enumerable: true,
+    get: function () {
+      return bcUrRegistry[k];
+    }
+  });
+});
+exports.SOLNFTItem = SOLNFTItem;
+exports.SolSignRequest = SolSignRequest;
+exports.SolSignature = SolSignature;
+//# sourceMappingURL=bc-ur-registry-sol.cjs.development.js.map
