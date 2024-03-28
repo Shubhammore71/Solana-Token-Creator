@@ -8,12 +8,19 @@ Welcome to the Solana Token Creator Website! This web application allows users t
 
 ## Features
 
-- **Token Creation:** Easily create custom Solana tokens with a user-friendly interface.
-- **Customizable Parameters:** Define token name, symbol, supply, decimals, and other essential attributes.
-- **Solana Integration:** Utilizes Solana blockchain technology for token creation and management.
-- **Web-based:** Accessible via web browsers on desktop and mobile devices.
-- **Simple and Intuitive:** Designed for ease of use, requiring no prior blockchain knowledge.
+Here are six best offers you can highlight in your Solana token popularity section:
 
+1. **Efficient Token Creation:** Solana Genius's Token Creator simplifies the process of creating Solana tokens, allowing you to define parameters such as name, symbol, and supply effortlessly.
+
+2. **Seamless Deployment:** With Solana Genius, deploying your tokens onto the Solana blockchain is a smooth and hassle-free experience, ensuring rapid access to the Solana ecosystem.
+
+3. **Airdrop Support:** Solana Genius facilitates airdrops, enabling you to distribute tokens to a wide audience quickly and efficiently, fostering community engagement and adoption.
+
+4. **Secure Transfer Mechanism:** Our platform offers secure mechanisms for transferring tokens, ensuring that transactions on the Solana blockchain are fast, reliable, and secure.
+
+5. **Metadata Updates:** Solana Genius allows for easy updating of token metadata, ensuring that your token's information remains accurate and up-to-date as your project evolves.
+
+6. **Comprehensive Support:** With Solana Genius, you'll have access to comprehensive support to address any questions or issues you encounter during the token creation process, ensuring a smooth experience from start to finish.
 ## Getting Started
 
 To get started with creating Solana tokens, simply visit the [Solana Token Creator Website](https://solanagenius-solanatokencreator.netlify.app/) and follow the on-screen instructions.
