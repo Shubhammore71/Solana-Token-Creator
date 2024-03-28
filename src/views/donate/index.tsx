@@ -19,10 +19,10 @@ import Branding from "../../components/Branding";
 interface DonateViewProps {
 
   setOpenSendTransaction: (value: boolean) => void;
-
+  handleFormFieldChange: (fieldName: string, value: any) => void;
 }
 
-export const DonateView: FC<DonateViewProps> = ({ setOpenSendTransaction }) => {
+export const DonateView: FC<DonateViewProps> = ({ setOpenSendTransaction, handleFormFieldChange }) => {
   const wallet = useWallet();
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
