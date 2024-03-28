@@ -36,7 +36,7 @@ export const TokenMetadata: FC<TokenMetadataProps > =({setOpenTokenMetaData})=>{
     
           // Deserialize metadata account data
           const metadata = Metadata.fromAccountInfo(metadataAccount);
-          const metadataData = metadata.data;
+          const metadataData = metadata[0].data;
     
           // Set token metadata and logo
           setTokenMetadata(metadataData);
@@ -152,15 +152,18 @@ export const TokenMetadata: FC<TokenMetadataProps > =({setOpenTokenMetaData})=>{
                         <InputView
                           name="Token Name"
                           placeholder={tokenMetadata?.name}
+                          clickhandle={() => {}}
                         />
   
                         <InputView
                           name="Symbol"
                           placeholder={tokenMetadata?.symbol || "undefined"}
+                          clickhandle={() => {}}
                         />
                         <InputView
                           name="Token URI"
                           placeholder={tokenMetadata?.uri}
+                          clickhandle={() => {}}
                         />
   
                         <div className="mb-6 text-center">
