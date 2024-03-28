@@ -19,10 +19,10 @@ import Branding from "../../components/Branding";
 interface DonateViewProps {
 
   setOpenSendTransaction: (value: boolean) => void;
-  handleFormFieldChange: (fieldName: string, value: any) => void;
+
 }
 
-export const DonateView: FC<DonateViewProps> = ({ setOpenSendTransaction, handleFormFieldChange }) => {
+export const DonateView: FC<DonateViewProps> = ({ setOpenSendTransaction }) => {
   const wallet = useWallet();
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
@@ -136,7 +136,7 @@ export const DonateView: FC<DonateViewProps> = ({ setOpenSendTransaction, handle
                   <InputView
                     name="Amount"
                     placeholder=" amount"
-                    clickhandle={(e) => handleFormFieldChange("amount", e)}
+                    clickhandle={() => {}}
                   />
                 </div>
                 <div className="mt-5 w-full text-center">
