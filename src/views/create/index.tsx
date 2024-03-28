@@ -100,7 +100,7 @@ export const CreateView: FC<CreateViewProps> = ({setOpenCreateModal})=>{
                         data:{
                             name: token.name,
                             symbol:token.symbol,
-                            uri: metadataUrl,
+                            uri: metadataUrl || '',
                             creators:null,
                             sellerFeeBasisPoints:0,
                             uses:null,
@@ -297,7 +297,7 @@ export const CreateView: FC<CreateViewProps> = ({setOpenCreateModal})=>{
                                     <textarea
                                     onChange={(e)=>handleFormFieldChange("description", e)}
                                     className="border-default-200 relative mt-48 block w-full w-full rounded border-white/10 bg-transparent py-1.5 px-3 text-white/80 focus:border-white/25 focus:ring-transparent"
-                                    rows="6"
+                                    rows={6}
                                     placeholder="Description of your token...">
                                     </textarea>
                                 </div>
