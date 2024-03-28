@@ -397,6 +397,7 @@ export const CreateView: FC<CreateViewProps> = ({setOpenCreateModal})=>{
                                         <InputView
                                         name="Token Address"
                                         placeholder={tokenMintAddress}
+                                        clickhandle={() => {}}
                                         />
                                         <span
                                         className="cursor-pointer"
