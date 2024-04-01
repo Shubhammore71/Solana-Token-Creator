@@ -53,7 +53,7 @@ If you're interested in contributing to the development of the Solana Token Crea
 1. **Clone the Repository:** Use Git to clone the repository to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/solana-token-creator.git
+   git clone https://github.com/Shubhammore71/solana-token-creator.git
    ```
 
 2. **Navigate to the Project Directory:** Move into the project directory.
