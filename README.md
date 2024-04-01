@@ -37,24 +37,29 @@ To get started with creating Solana tokens, simply visit the [Solana Token Creat
 5. Follow any additional on-screen prompts or instructions as necessary.
 6. Once the token creation process is complete, you will receive confirmation of your newly created token.
 
-Future Plan: Implementing Chatbot for NFT Interaction
+## Future Plan: Implementing Chatbot for NFT Interaction
+
 In our continuous effort to enhance user experience and engagement, we are excited to announce our upcoming plan to implement a chatbot feature that will revolutionize interaction within the NFT ecosystem.
 
-What to Expect:
-1. Dynamic Interaction: Our chatbot will enable dynamic conversations between NFTs and their creators, fostering a unique bond and interaction channel within the Solana Token Creator platform.
+### What to Expect:
 
-2. Enhanced Engagement: Engage directly with your NFT creations in real-time, allowing for personalized interactions and deeper connections between creators and their digital assets.
+**1. Dynamic Interaction:** Our chatbot will enable dynamic conversations between NFTs and their creators, fostering a unique bond and interaction channel within the Solana Token Creator platform.
 
-3. Creator Support: The chatbot will also serve as a support channel for creators, providing assistance, answering queries, and offering insights to maximize the potential of their NFTs.
+**2. Enhanced Engagement:** Engage directly with your NFT creations in real-time, allowing for personalized interactions and deeper connections between creators and their digital assets.
 
-4. Community Building: Facilitate community building and collaboration through the chatbot, enabling creators to connect with their audience, share updates, and gather feedback seamlessly.
+**3. Creator Support:** The chatbot will also serve as a support channel for creators, providing assistance, answering queries, and offering insights to maximize the potential of their NFTs.
 
-5. Innovative Features: Stay tuned for innovative features and functionalities integrated into the chatbot, aimed at enhancing the overall NFT experience and pushing the boundaries of digital asset interaction.
+**4. Community Building:** Facilitate community building and collaboration through the chatbot, enabling creators to connect with their audience, share updates, and gather feedback seamlessly.
 
-How You Can Get Involved:
+**5. Innovative Features:** Stay tuned for innovative features and functionalities integrated into the chatbot, aimed at enhancing the overall NFT experience and pushing the boundaries of digital asset interaction.
+
+### How You Can Get Involved:
+
 As we embark on this exciting journey to integrate chatbot capabilities into our platform, we invite you to stay connected and share your ideas, suggestions, and feedback. Together, we can shape the future of NFT interaction and elevate the Solana Token Creator experience to new heights.
 
 Join us in redefining the way NFTs are experienced, interacted with, and celebrated in the vibrant Solana ecosystem!
+
+
 
 ## Support
 
